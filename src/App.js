@@ -1,36 +1,44 @@
-import React from 'react';
-import Table from './Table';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
-const App = () => {
-    // Sample dynamic data (could come from an API, for example)
-    const data = [
-        { id: 1, name: 'John Doe', email: 'john@example.com' },
-        { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-        { id: 3, name: 'Sam Brown', email: 'sam@example.com' },
-        { id: 4, name: 'Chris Johnson', email: 'chris@example.com' },
-        { id: 5, name: 'Amanda White', email: 'amanda@example.com' },
-        { id: 6, name: 'Tom Lee', email: 'tom@example.com' },
-        { id: 7, name: 'Sara Black', email: 'sara@example.com' },
-        { id: 8, name: 'James Wilson', email: 'james@example.com' },
-        { id: 9, name: 'Patricia Moore', email: 'patricia@example.com' },
-        { id: 10, name: 'Michael Davis', email: 'michael@example.com' },
-        { id: 11, name: 'Linda Garcia', email: 'linda@example.com' },
-        { id: 12, name: 'David Martinez', email: 'david@example.com' },
-    ];
-
-    const rowsPerPage = 5; // Number of rows per page
-
-    return ( <
-        div style = {
-            { margin: '20px' }
-        } >
-        <
-        h1 > Dynamic Table with Pagination < /h1> <
-        Table data = { data }
-        rowsPerPage = { rowsPerPage }
-        /> < /
-        div >
-    );
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
 };
 
-export default App;
+export default function App() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <Button onClick={handleOpen}>Open modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
