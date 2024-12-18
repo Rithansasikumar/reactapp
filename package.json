@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.17",
     "webpack": "^5.97.1"
   }
 }
