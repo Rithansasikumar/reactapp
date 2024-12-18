@@ -9,7 +9,7 @@ const StackFile = () => {
 
   return (
     <div className='ml-20'>
-      <h1 >Welcome to Our App</h1>
+      <h1 class="text-sky-500">Welcome to Our App</h1>
       <Button
         variant="contained"
         color="primary"
